@@ -2,28 +2,32 @@ package com.company.catEatFood;
 
 public class Cat {
 
-    private int appetite;
+    private final String name;
+    private final int appetite;
+    private final boolean satiety;
+    // IDE предложило методы финальные. Разобраться почему.
 
-    public Cat(int appetite) {
+    // При необходимости добавить get\set на все переменные. Пока не придумал где их использовать
+
+    public Cat(int appetite,String name, boolean satiety) {
         this.appetite = appetite;
-    }
-
-    public int getAppetite() {
-        return appetite;
-    }
-
-    public void setAppetite(int appetite) {
-        this.appetite = appetite;
+        this.name=name;
+        this.satiety = satiety;
     }
 
     public void catEatFood(Plate plate) {
 
+        checkHungryCat(plate);
 
+    }
 
-//        System.out.println("Кошка ест. Аппетит: " + appetite);
-//        if ( plate. > getAppetite()) {
-//            System.out.println("Кошка наелась");
-//            return -=getAppetite();
-//        } else System.out.println("Еды мало, стоит добавить.");
-     }
+    private void checkHungryCat(Plate plate) {
+        if (appetite==0) {
+            System.out.println("\nСытость "+name+" : "+satiety);
+        } else {
+            System.out.println("Кошка " + name + " голодна на - " + appetite + " ед.");
+            plate.setVolume(appetite, name,satiety);
+        }
+    }
+
 }
